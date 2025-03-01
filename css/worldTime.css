@@ -1,0 +1,22 @@
+/*Concept By Renz*/
+/*Powered By ChatGPT*/
+
+body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    background-color: #f4f4f4; 
+    margin: 0; padding: 20px;
+}
+h1 { color: #222; }
+h2 { color: #333; margin-top: 30px; border-bottom: 2px solid #ddd; display: inline-block; padding-bottom: 5px; }
+h3 { color: #555; margin-top: 20px; font-weight: normal; }
+.time-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; }
+.time-list li { 
+    margin: 5px 10px; 
+    font-size: 16px; 
+    background: white; 
+    padding: 8px 12px; 
+    border-radius: 5px; 
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    display: inline-block;
+}
