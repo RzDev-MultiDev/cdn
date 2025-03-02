@@ -62,11 +62,17 @@ const worldZones = {
     }
 };
 
-// Function buat update waktu
-const date = new Date();
-const options = { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' };
-document.getElementById('tanggal').innerText = date.toLocaleDateString('id-ID', options);
+// Pastikan elemen tanggal ada sebelum mengubah teksnya
+document.addEventListener("DOMContentLoaded", () => {
+    const dateElement = document.getElementById('tanggal');
+    if (dateElement) {
+        const date = new Date();
+        const options = { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' };
+        dateElement.innerText = date.toLocaleDateString('id-ID', options);
+    }
+});
 
+// Function buat update waktu
 function updateTime() {
     const container = document.getElementById("timeContainer");
     if (!container) return;
@@ -80,10 +86,12 @@ function updateTime() {
 
         Object.keys(worldZones[benua]).forEach(negara => {
             const countrySection = document.createElement("div");
-            countrySection.innerHTML = `<h3>${negara}</h3><ul class="time-list" id="${negara}-list"></ul>`;
-            container.appendChild(countrySection);
+            const list = document.createElement("ul"); // Buat elemen ul sebelum dipakai
 
-            const list = document.getElementById(`${negara}-list`);
+            countrySection.innerHTML = `<h3>${negara}</h3>`;
+            list.classList.add("time-list"); // Tambahkan class untuk styling
+            countrySection.appendChild(list);
+            container.appendChild(countrySection);
 
             worldZones[benua][negara].forEach(zone => {
                 const now = new Date();
@@ -100,6 +108,8 @@ function updateTime() {
     });
 }
 
-// Jalankan update waktu
-updateTime();
-setInterval(updateTime, 1000);
+// Jalankan update waktu saat dokumen siap
+document.addEventListener("DOMContentLoaded", () => {
+    updateTime();
+    setInterval(updateTime, 1000);
+});
