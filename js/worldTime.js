@@ -63,6 +63,10 @@ const worldZones = {
 };
 
 // Function buat update waktu
+const date = new Date();
+const options = { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' };
+document.getElementById('tanggal').innerText = date.toLocaleDateString('id-ID', options);
+
 function updateTime() {
     const container = document.getElementById("timeContainer");
     if (!container) return;
